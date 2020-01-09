@@ -18,8 +18,7 @@
       }
       render() {
         return (
-          //<Hotels hotels={this.state.hotels} />
-          <Map  />
+          <Hotels hotels={this.state.hotels} />          
         )
       }
     }
