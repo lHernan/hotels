@@ -28,7 +28,7 @@ class HotelDetail extends Component {
       <a href='/'>Go Back</a>
       <br></br>
       <h2>{this.state.details.name}</h2>
-      <h4>{this.state.details.sublabel}</h4>
+      <h4>{this.state.details.mail}</h4>
     </div> 
   );
   }
