@@ -5,7 +5,14 @@
     import HotelHome from './components/HotelHome.js';
     import Map from './components/Map.js';
 
-    import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+    import {
+      BrowserRouter as Router,
+      Switch,
+      Route,
+      Link,
+      useRouteMatch,
+      useParams
+    } from "react-router-dom";
 
 
     class App extends Component {
@@ -25,7 +32,7 @@
           <Router>
             <div>
               <Route exact path="/" component={HotelHome} />
-              <Route path="/hotel-detail" component={HotelDetail} />
+              <Route path="/hotel-detail/:hotelId" component={HotelDetail} />
             </div>
           </Router>
         );
