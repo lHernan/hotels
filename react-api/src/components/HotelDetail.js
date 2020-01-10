@@ -1,8 +1,9 @@
 import React, { Component }from "react";
-import { GoogleMap,  withGoogleMap,
-  withScriptjs, Marker, InfoWindow} from "react-google-maps";
-  import Map from './Map.js';
-const MapWrapped = withScriptjs(withGoogleMap(Map));
+import { Map, GoogleApiWrapper , Marker} from 'google-maps-react';
+const mapStyles = {
+  width: '100%',
+  height: '100%',
+};
 
 class HotelDetail extends Component {  
 
@@ -52,7 +53,7 @@ class HotelDetail extends Component {
   </div>
   <div class="row">
     <div class="col">
-      aqui va el mapa
+    
     </div>
   </div>
 </div>
@@ -69,12 +70,14 @@ class HotelDetail extends Component {
       <h4>{this.state.details.web}</h4>
       <img src={this.state.details.image} alt={this.state.details.name} /> 
       <div style={{ width: "100vw", height: "100vh" }}>
-      <MapWrapped
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAi9-gnm4L4lBpQgOPXbmPf6YbxLf4g2bE`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
+      <Map
+          google={this.props.google}
+          zoom={18}
+          style={mapStyles}
+          initialCenter={{ lat: 4.683, lng: -74.050}}
+          >
+          <Marker position={{ lat: 4.683, lng: -74.050}} />
+        </Map>
     </div>
     </div> 
 
@@ -84,4 +87,6 @@ class HotelDetail extends Component {
   
 }
 
-export default HotelDetail;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBZJ6jICkoU62Oq-eXjjfWS_dbf1fQMvAc '
+})(HotelDetail);
