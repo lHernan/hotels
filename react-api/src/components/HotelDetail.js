@@ -2,45 +2,36 @@ import React, { Component }from "react";
 import Fetch from './Fetch.js';
 import { BrowserRouter as Router, Route, Link, useParams } from "react-router-dom";
 
-function HotelDetail(props) {
-  var details;
-  let { hotelId } = useParams();
-  let detalles = getDetails(hotelId);
-  detalles.then(function(result){
-    console.log(result.name);
-    details = result;
-    console.log(details.name);
-  })
+class HotelDetail extends Component {  
+
+  state = {
+    details: {'name': 'Hotel name on detail', 'sublabel': 'Hotel description'}
+  }
+
+  componentDidMount() { 
+
+    var url = window.location.href.split('/');
+    var hotelId = url[url.length-1];
+
+    console.log('Hotel id: '+ hotelId);
+
+    fetch('http://localhost:5000/getHotelById/'+hotelId)
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ details: data })
+    })
+    .catch(console.log)
+  }
+  render() {
   return (
     <div>
       <a href='/'>Go Back</a>
       <br></br>
-  <div>{details.name}</div>
-      
+      <h2>{this.state.details.name}</h2>
+      <h4>{this.state.details.sublabel}</h4>
     </div> 
-  ); 
-}
-
-async function getDetails(id) {
-  var hotel = await Fetch.get('getHotelById/' + id);
-  console.log(hotel);
-  return hotel;
-}
-
-class Detalles extends Component {
-  state = {
-    detalles: []
-  }
-  componentDidMount() {
-    fetch(`http://localhost:5000/getHotelById/5e0eb367292e020c94ca6ed3`)
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ hotels: data })
-    })
-    .catch(console.log)
+  );
   }
 }
-
-
 
 export default HotelDetail;

@@ -17,12 +17,6 @@ import Fetch from './Fetch.js';
         </div>
         
       )
-    };
-
-    async function getDetails(id) {
-      const hotel = await Fetch.get('getHotelById/' + id);
-      console.log(hotel);
-    }
-    
+    };    
 
     export default Hotels
