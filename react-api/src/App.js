@@ -1,12 +1,16 @@
 
     import React, { Component } from 'react'
     import Hotels from './components/Hotels.js';
+    import HotelDetail from './components/HotelDetail.js';
+    import HotelHome from './components/HotelHome.js';
     import Map from './components/Map.js';
+
+    import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
     class App extends Component {
       state = {
-        hotels: []
+        hotels: [{'name': 'hotel a', 'id': 1}, {'name': 'hotel b', 'id': 2}, {'name': 'hotel c', 'id': 3}]
       }
       componentDidMount() {
         fetch('http://localhost:5000/getAllHotels')
@@ -18,8 +22,13 @@
       }
       render() {
         return (
-          <Hotels hotels={this.state.hotels} />          
-        )
+          <Router>
+            <div>
+              <Route exact path="/" component={HotelHome} />
+              <Route path="/hotel-detail" component={HotelDetail} />
+            </div>
+          </Router>
+        );
       }
     }
     export default App;
