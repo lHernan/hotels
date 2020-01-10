@@ -8,8 +8,10 @@ function HotelDetail(props) {
 
   return (
     <div>
+      <a href='/'>Go Back</a>
+      <br></br>
       HotelDetail: {hotelId}
-     </div> 
+    </div> 
   ); 
 } 
 

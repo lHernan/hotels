@@ -10,7 +10,7 @@ import Fetch from './Fetch.js';
                 <h5 class="card-title">{hotel.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{hotel.email}</h6>
                 
-                <button onClick={() => getDetails(hotel._id)}>𝗫</button>             
+                <a href={'/hotel-detail/'+hotel.id}>detail</a>            
               </div>
             </div>
           ))}
