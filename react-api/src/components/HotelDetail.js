@@ -1,11 +1,10 @@
 import React, { Component }from "react";
-import Fetch from './Fetch.js';
-import { BrowserRouter as Router, Route, Link, useParams } from "react-router-dom";
 
 class HotelDetail extends Component {  
 
   state = {
-    details: {}
+    details: {},
+    locationInfo: {}
   }
 
   componentDidMount() { 
@@ -19,6 +18,7 @@ class HotelDetail extends Component {
     .then(res => res.json())
     .then((data) => {
       this.setState({ details: data })
+      this.setState({ locationInfo: data.location })
       console.log(data);
     })
     .catch(console.log)
@@ -30,9 +30,7 @@ class HotelDetail extends Component {
       <br></br>
       <h2>{this.state.details.name}</h2>
       <h4>{this.state.details.mail}</h4>
-      <h4>{this.state.details.location.address}</h4>
-
-     
+      <h4>{this.state.locationInfo.address}</h4>
     </div> 
   );
   }
