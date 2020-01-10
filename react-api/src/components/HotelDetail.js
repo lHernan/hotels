@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, useParams } from "react-router-do
 class HotelDetail extends Component {  
 
   state = {
-    details: {'name': 'Hotel name on detail', 'sublabel': 'Hotel description'}
+    details: {}
   }
 
   componentDidMount() { 
@@ -19,6 +19,7 @@ class HotelDetail extends Component {
     .then(res => res.json())
     .then((data) => {
       this.setState({ details: data })
+      console.log(data);
     })
     .catch(console.log)
   }
@@ -29,6 +30,9 @@ class HotelDetail extends Component {
       <br></br>
       <h2>{this.state.details.name}</h2>
       <h4>{this.state.details.mail}</h4>
+      <h4>{this.state.details.location.address}</h4>
+
+     
     </div> 
   );
   }
