@@ -1,4 +1,8 @@
 import React, { Component }from "react";
+import { GoogleMap,  withGoogleMap,
+  withScriptjs, Marker, InfoWindow} from "react-google-maps";
+  import Map from './Map.js';
+const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 class HotelDetail extends Component {  
 
@@ -25,6 +29,35 @@ class HotelDetail extends Component {
   render() {
   return (
     <div>
+    <div class="container">
+    <div class="row">
+      <div class="col">
+    <a href='/'>Go Back</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      aqui va el nombre del hotel
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      aqui van las estrellas
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      aqui va la direccion
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      aqui va el mapa
+    </div>
+  </div>
+</div>
+
+    <div>
       <a href='/'>Go Back</a>
       <br></br>
       <h2>{this.state.details.name}</h2>
@@ -35,10 +68,20 @@ class HotelDetail extends Component {
       <h4>{this.state.details.currency}</h4>
       <h4>{this.state.details.web}</h4>
       <img src={this.state.details.image} alt={this.state.details.name} /> 
-      
+      <div style={{ width: "100vw", height: "100vh" }}>
+      <MapWrapped
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAi9-gnm4L4lBpQgOPXbmPf6YbxLf4g2bE`}
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `100%` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+      />
+    </div>
     </div> 
+
+    </div>
   );
   }
+  
 }
 
 export default HotelDetail;
