@@ -2,7 +2,7 @@ const Express = require("express");
 const BodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
-const CONNECTION_URL = "mongodb+srv://adminhotel:pMnGne8MJg8Hx9T@hotelsmongodb-httsg.mongodb.net/test?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://adminhotel:pMnGne8MJg8Hx9T@cluster0-gpbup.gcp.mongodb.net/test?retryWrites=true&w=majority";
 const DATABASE_NAME = "hotelsMongoDB";
  
 var cors = require('cors');
