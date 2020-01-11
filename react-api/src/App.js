@@ -10,7 +10,7 @@ import HotelHome from './components/HotelHome.js';
 
   class App extends Component {
     state = {
-      hotels: [{'name': 'hotel a', 'id': 1}, {'name': 'hotel b', 'id': 2}, {'name': 'hotel c', 'id': 3}]
+      hotels: []
     }
     componentDidMount() {
       fetch('http://localhost:5000/getAllHotels')
